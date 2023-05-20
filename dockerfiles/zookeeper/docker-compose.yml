@@ -1,0 +1,35 @@
+version: '2.2'
+services:
+  zk1:
+    image: zookeeper
+    user: root
+    restart: always
+    container_name: zk1
+    ports:
+      - 2182:2181
+    volumes:
+      - ./zk1/zoo.cfg:/conf/zoo.cfg
+      - ./zk1/myid:/data/myid
+  zk2:
+    image: zookeeper
+    user: root
+    restart: always
+    container_name: zk2
+    ports:
+      - 2183:2181
+    volumes:
+      - ./zk2/zoo.cfg:/conf/zoo.cfg
+      - ./zk2/myid:/data/myid
+  zk3:
+    image: zookeeper
+    user: root
+    restart: always
+    container_name: zk3
+    ports:
+      - 2184:2181
+    volumes:
+      - ./zk3/zoo.cfg:/conf/zoo.cfg
+      - ./zk3/myid:/data/myid
+networks:
+  network-zk-nb:
+    external: true
